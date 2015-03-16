@@ -1,4 +1,10 @@
-</p>
+
+<div class="container">
+  <section class="content content--bleed content--black">
+    <section id="portfolio-item">
+      <div class="close-btn"><a ui-sref="portfolio.gallery"><span class="mdi mdi-close"></span></a></div>
+      <H1><span>#</span> {{project.name}}</H1>
+      <p>{{project.description}}</p>
       <div ng-repeat="item in project.images"><img src="{{item}}"/></div>
     </section>
   </section>

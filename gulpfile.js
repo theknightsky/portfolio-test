@@ -44,7 +44,6 @@ gulp.task('dist',function(){
     .pipe(gulp.dest('public/dist/'));
 
     gulp.src('public/templates/*.html')
-    .pipe(minify())
     .pipe(gulp.dest('public/dist/templates/'));
 
     gulp.src('public/images/*')

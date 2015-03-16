@@ -51,7 +51,7 @@ app.controller('contactCtrl', ['$scope','$rootScope', function ($scope, $rootSco
     console.log($rootScope.hideIntro);
 }]);
 
-app.controller('portfolioCtrl', ['$scope','$rootScope', function ($scope, $rootScope){
+app.controller('portfolioCtrl', ['$scope','$rootScope','$stateParams', function ($scope, $rootScope, $stateParams){
     $rootScope.hideIntro = true;
     console.log($rootScope.hideIntro);
 
