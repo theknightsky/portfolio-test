@@ -47,6 +47,8 @@ gulp.task('dist',function(){
     .pipe(minify())
     .pipe(gulp.dest('public/dist/templates/'));
 
+    gulp.src('public/images/*')
+    .pipe(gulp.dest('public/dist/images/'));
 
     gulp.src([paths.css.roboto, paths.css.app])
     .pipe(minify())
