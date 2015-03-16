@@ -60,6 +60,7 @@ body
         +pad(1)
         +span(10)
         +vert-centerer
+        +rhythm-margins(3, 0)
         +adjust-font-size-to(12px, 1.5)
         +transition(all 0.3s ease)
 
@@ -468,6 +469,7 @@ body.intro--hidden
         .hero-message
             +span(12)
             +pad(0)
+            +rhythm-margins(0, 0)
     .logo
         &--big
             left: 1em
@@ -562,8 +564,13 @@ body.intro--hidden
         +squish(0)
         // +pad(0)
         +pad(0.5 of 12)
+
         &--bleed
             +bleed(0 0 narrow)
+        h1
+            +adjust-font-size-to(24px)
+        p
+            +adjust-font-size-to(14px, 1)
 
 +susy-breakpoint(0 820px, 12)
     .half
