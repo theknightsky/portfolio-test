@@ -42,18 +42,15 @@ app.controller('mainCtrl', ['$scope','$rootScope', function ($scope, $rootScope)
     });
 
     $rootScope.hideIntro = false;
-    console.log($rootScope.hideIntro);
 }]);
 
 app.controller('contactCtrl', ['$scope','$rootScope', function ($scope, $rootScope){
     console.log("welcome to the contact page");
     $rootScope.hideIntro = true;
-    console.log($rootScope.hideIntro);
 }]);
 
 app.controller('portfolioCtrl', ['$scope','$rootScope','$stateParams', function ($scope, $rootScope, $stateParams){
     $rootScope.hideIntro = true;
-    console.log($rootScope.hideIntro);
 
     $scope.project = {
                 name: $stateParams.projectName,
@@ -68,5 +65,4 @@ app.controller('portfolioCtrl', ['$scope','$rootScope','$stateParams', function 
 
 app.controller('resumeCtrl', ['$scope','$rootScope', function ($scope, $rootScope){
     $rootScope.hideIntro = true;
-    console.log($rootScope.hideIntro);
 }]);
