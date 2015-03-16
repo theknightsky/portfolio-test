@@ -15,9 +15,49 @@ var gulp = require('gulp'),
     minify = require('gulp-minify-css'),
     livereload = require('gulp-livereload');
 
+
+// --------------------------------------------------------
+//  paths
+// --------------------------------------------------------
+
+var paths = {
+    js: {
+        angular: 'bower_components/angular/angular.js',
+        angularAnimate: 'bower_components/angular-animate/angular-animate.js',
+        uiRouter: 'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+        app: 'public/js/app.js'
+    },
+    css: {
+        roboto: 'bower_components/roboto-fontface/roboto-fontface.css',
+        app: 'public/stylesheets/css/app.css'
+    }
+}
+
 // --------------------------------------------------------
 //  Gulp Tasks
 // --------------------------------------------------------
+
+gulp.task('dist',function(){
+
+    gulp.src('public/index.html')
+    .pipe(minify())
+    .pipe(gulp.dest('public/dist/'));
+
+    gulp.src('public/templates/*.html')
+    .pipe(minify())
+    .pipe(gulp.dest('public/dist/templates/'));
+
+
+    gulp.src([paths.css.roboto, paths.css.app])
+    .pipe(minify())
+    .pipe(concat('app.css'))
+    .pipe(gulp.dest('public/dist/css/'));
+
+    gulp.src([paths.js.angular, paths.js.angularAnimate, paths.js.uiRouter, paths.js.app])
+    .pipe(uglify())
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('public/dist/js'));
+});
 
 gulp.task('compass-sass', function(){
 
