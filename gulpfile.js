@@ -52,7 +52,7 @@ gulp.task('dist',function(){
     gulp.src('bower_components/roboto-fontface/fonts/*')
     .pipe(gulp.dest('public/dist/css/fonts/'));
 
-    gulp.src([paths.css.roboto, paths.css.app])
+    gulp.src([paths.css.app])
     .pipe(minify())
     .pipe(concat('app.css'))
     .pipe(gulp.dest('public/dist/css/'));
