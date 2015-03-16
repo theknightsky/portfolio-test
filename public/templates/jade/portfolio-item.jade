@@ -1,0 +1,13 @@
+.container
+    section.content.content--bleed.content--black
+        section#portfolio-item
+            .close-btn
+                a(ui-sref="portfolio.gallery")
+                    span.mdi.mdi-close
+            H1
+                span #
+                |  {{project.name}}
+            p {{project.description}}
+
+            div(ng-repeat="item in project.images")
+                img(src="{{item}}")

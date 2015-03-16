@@ -1,0 +1,100 @@
+@import "compass/css3"
+@import "susy"
+@import "_config"
+@import "breakpoint"
+@import "../../../bower_components/juice/dist/_juice.scss"
+@import "../../../bower_components/normalize.css/normalize.css"
+@import "../../../bower_components/material-colors/dist/colors.sass"
+@import "../../../bower_components/mdi/scss/materialdesignicons.scss"
+@import "../../../bower_components/roboto-fontface/roboto-fontface.scss"
+
+// Fix for unicode() problem with sass and compass
+@mixin box-sizing($value)
+    -moz-box-sizing: $value
+    box-sizing: $value
+
+//colors
+$base: $md-blue-700
+
+// --------------------------------------------------------
+//  Base: General styles for elements with no ID/CLASS
+// --------------------------------------------------------
+html,body
+    +clean
+    height: 100%
+
+body
+    background: $md-white
+
+// --------------------------------------------------------
+//  Layout: Styles for single/structural elements w IDs
+// --------------------------------------------------------
+
+#trigger
+    top: 0
+    right: 0
+    width: 50px
+    height: 50px
+    position: absolute
+    background: $md-blue-500
+
+#header
+    height: 100%
+    position: relative
+    background: darken($base, 4%)
+
+    +clean
+    +span(4)
+    +squish(4)
+
+    +transition(all 0.3s ease)
+
+    #logo2
+        display: none
+
+    #logo
+        +centerer
+        width: 250px
+        img
+            height: auto
+            width: 100%
+    // .name
+    //     &--first
+    //         top: 0
+    //     &--last
+    //         bottom: 0
+    //     &--first, &--last
+    //         left: 0
+    //         right: 0
+    //         width: auto
+    //         font-size: 2em
+    //         padding: 10px 0 10px 30px
+    //         text-align: center
+    //         position: absolute
+    //         letter-spacing: 30px
+    //         color: lighten($base, 10%)
+    //         background: $md-red-500
+    //         font-family: "Roboto-Bold", Helvetica, Arial, sans-serif
+
+
+// --------------------------------------------------------
+//  Modules: Styles for re-usable elements w Classes
+// --------------------------------------------------------
+
+body.show-content
+    background: $md-white
+
+    #header
+        +span(3)
+        +squish(0)
+
+.container
+    height: 100%
+
+    +container
+
+
+// --------------------------------------------------------
+//  State Rules: Styles for different states/screen sizes
+// --------------------------------------------------------
+

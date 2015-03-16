@@ -1,0 +1,165 @@
+@import "compass/css3"
+@import "susy"
+@import "_config"
+@import "breakpoint"
+@import "juice/dist/_juice.scss"
+@import "material-colors/dist/colors.sass"
+@import "mdi/scss/materialdesignicons.scss"
+@import "roboto-fontface/roboto-fontface.scss"
+@import "geoffgraham.animate.scss/animate.scss"
+
+// Fix for unicode() problem with sass and compass
+@mixin box-sizing($value)
+    -moz-box-sizing: $value
+    box-sizing: $value
+
+@function set-color($color)
+    @if (lightness($color) > 70)
+        @return $md-grey-700 // Lighter backgorund, return dark color
+    @else
+        @return $md-white // Darker background, return light color
+
+
+
+$base: $md-red-400
+
+// --------------------------------------------------------
+//  Base: General styles for elements with no ID/CLASS
+// --------------------------------------------------------
+
+//normalize.css
+@import "../../../bower_components/normalize.css/normalize.css"
+
+html,body
+    +clean
+    height: 100%
+
+body
+    overflow: hidden
+    background: $md-white
+    font-family: "Roboto", Helvetica, Arial, sans-serif
+    -webkit-backface-visibility: hidden // Addresses a small issue in webkit: http://bit.ly/NEdoDq
+    
+
+// --------------------------------------------------------
+//  Layout: Styles for single/structural elements w IDs
+// --------------------------------------------------------
+
+#header
+    height: 100%
+    overflow: hidden
+    background: $base
+    position: relative
+
+    +transition(all 0.8s ease-out)
+
+    .logo--big
+        left: 0
+        width: 100px
+        height: 100px
+        padding: 0.7em
+        top: gutter(5)
+        position: absolute
+        background: $md-white
+
+        +border-radius(4px)
+        +flipInX()
+
+        #name
+            left: 0
+            right: 0
+            top: 100%
+            width: 100%
+            font-size: 1em
+            color: $md-white
+            text-align: center
+            position: absolute
+            margin-top: gutter(5)
+            // background: $md-red-500
+
+        img
+            width: 100%
+            height: auto
+
+#nav
+    left: 0
+    top: 100%
+    width: 100%
+    height: 70px
+    padding: 8px 0
+    margin-top: -86px
+    position: absolute
+    background: $md-white
+
+    +transition(all 0.8s ease-out)
+    +box-shadow(0px 1px 1px 0px rgba(black, 0.5))
+
+    .logo--small
+        +vert-centerer
+        float: left
+        width: 42px
+        height: 42px
+        padding: 10px
+        background: $base
+        margin-right: gutter(12)
+
+        +border-radius(4px)
+
+        img
+            width: 100%
+            height: auto
+    ul#menu
+        +clean
+        li 
+            float: left
+            padding: 0 1em
+            font-size: 1.2em
+            line-height: 70px
+            // font-family: "Roboto-Light"
+            display: inline-block
+
+
+            &:hover a
+                color: $md-black
+
+            a
+                +transition(all 0.3s ease)
+                color: $md-grey-700
+
+                &:visited
+                    color: $base
+
+
+
+
+// --------------------------------------------------------
+//  Modules: Styles for re-usable elements w Classes
+// --------------------------------------------------------
+
+
+
+.container
+    +container
+    height: 100%
+    width: span(10)
+    position: relative
+
+.hero
+    width: 100%
+    height: 100%
+
+.hero-message
+    +vert-centerer
+    font-size: 4em
+    color: set-color($base)
+    font-family: "Roboto-Bold"
+    
+
+    span
+        +fadeInUp()
+
+// --------------------------------------------------------
+//  State Rules: Styles for different states/screen sizes
+// --------------------------------------------------------
+
+    
