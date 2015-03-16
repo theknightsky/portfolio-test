@@ -50,8 +50,8 @@ gulp.task('dist',function(){
     gulp.src('public/images/*')
     .pipe(gulp.dest('public/dist/images/'));
 
-    gulp.src('bower_components/roboto-fontface/fonts')
-    .pipe(gulp.dest('public/dist/fonts/'));
+    gulp.src('bower_components/roboto-fontface/fonts/*')
+    .pipe(gulp.dest('public/dist/css/fonts/'));
 
     gulp.src([paths.css.roboto, paths.css.app])
     .pipe(minify())
@@ -59,8 +59,8 @@ gulp.task('dist',function(){
     .pipe(gulp.dest('public/dist/css/'));
 
     gulp.src([paths.js.angular, paths.js.angularAnimate, paths.js.uiRouter, paths.js.app])
-    // .pipe(uglify())
-    .pipe(concat('app.js'))
+    .pipe(uglify())
+    // .pipe(concat('app.js'))
     .pipe(gulp.dest('public/dist/js'));
 });
 
