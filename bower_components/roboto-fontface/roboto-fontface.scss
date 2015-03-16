@@ -1,4 +1,4 @@
-$roboto-font-path: '../../../bower_components/roboto-fontface/fonts' !default;
+$roboto-font-path: '../../bower_components/roboto-fontface/fonts' !default;
 
 @mixin roboto-font($type, $weight, $style: normal) {
     @font-face {
