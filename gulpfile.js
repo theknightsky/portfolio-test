@@ -25,7 +25,7 @@ var paths = {
         angular: 'bower_components/angular/angular.js',
         angularAnimate: 'bower_components/angular-animate/angular-animate.js',
         uiRouter: 'bower_components/angular-ui-router/release/angular-ui-router.min.js',
-        app: 'public/js/app.js'
+        app: 'public/javascripts/app.js'
     },
     css: {
         roboto: 'bower_components/roboto-fontface/roboto-fontface.css',
@@ -60,7 +60,7 @@ gulp.task('dist',function(){
 
     gulp.src([paths.js.angular, paths.js.angularAnimate, paths.js.uiRouter, paths.js.app])
     .pipe(uglify())
-    // .pipe(concat('app.js'))
+    .pipe(concat('app.js'))
     .pipe(gulp.dest('public/dist/js'));
 });
 

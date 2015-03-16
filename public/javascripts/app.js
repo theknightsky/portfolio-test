@@ -24,17 +24,7 @@ app.config(['$stateProvider','$urlRouterProvider',function ($stateProvider,$urlR
     .state('portfolio.item', {
         url: '/portfolio/:projectName',
         templateUrl: "templates/portfolio-item.html",
-        controller: function($scope, $stateParams){
-            $scope.project = {
-                name: $stateParams.projectName,
-                description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae reprehenderit, eligendi suscipit necessitatibus, deserunt vero distinctio, quis voluptatum voluptatem vitae alias officiis dolorum! Non quaerat ducimus ipsam tempora dolorem voluptatum!",
-                images: [
-                    'images/Passkeep01.png',
-                    'images/Passkeep02.png',
-                    'images/Passkeep03.png'
-                ]
-            };
-        }
+        controller: "portfolioCtrl"
     })
     .state('resume', {
         url: '/resume',
@@ -64,6 +54,16 @@ app.controller('contactCtrl', ['$scope','$rootScope', function ($scope, $rootSco
 app.controller('portfolioCtrl', ['$scope','$rootScope', function ($scope, $rootScope){
     $rootScope.hideIntro = true;
     console.log($rootScope.hideIntro);
+
+    $scope.project = {
+                name: $stateParams.projectName,
+                description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae reprehenderit, eligendi suscipit necessitatibus, deserunt vero distinctio, quis voluptatum voluptatem vitae alias officiis dolorum! Non quaerat ducimus ipsam tempora dolorem voluptatum!",
+                images: [
+                    'images/Passkeep01.png',
+                    'images/Passkeep02.png',
+                    'images/Passkeep03.png'
+                ]
+            };
 }]);
 
 app.controller('resumeCtrl', ['$scope','$rootScope', function ($scope, $rootScope){
