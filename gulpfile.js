@@ -7,12 +7,16 @@
 var gulp = require('gulp'),
     jade = require('gulp-jade'),
     gutil = require('gulp-util'),
+    optipng = require('gulp-optipng'),
+    usemin = require('gulp-usemin'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    plumber = require('gulp-plumber'),
     notify = require('gulp-notify'),
     compass = require('gulp-compass'),
+    plumber = require('gulp-plumber'),
+    gulpFilter = require('gulp-filter'),
     minify = require('gulp-minify-css'),
+    bower = require('main-bower-files'),
     livereload = require('gulp-livereload');
 
 
@@ -21,47 +25,43 @@ var gulp = require('gulp'),
 // --------------------------------------------------------
 
 var paths = {
-    js: {
-        angular: 'bower_components/angular/angular.js',
-        angularAnimate: 'bower_components/angular-animate/angular-animate.js',
-        uiRouter: 'bower_components/angular-ui-router/release/angular-ui-router.min.js',
-        app: 'public/javascripts/app.js'
-    },
-    css: {
-        roboto: 'bower_components/roboto-fontface/roboto-fontface.css',
-        app: 'public/stylesheets/css/app.css'
-    }
+    public: '/dist'
 }
 
 // --------------------------------------------------------
 //  Gulp Tasks
 // --------------------------------------------------------
 
-gulp.task('dist',function(){
-
-    gulp.src('public/index.html')
-    .pipe(minify())
-    .pipe(gulp.dest('public/dist/'));
-
-    gulp.src('public/templates/*.html')
-    .pipe(gulp.dest('public/dist/templates/'));
-
-    gulp.src('public/images/*')
-    .pipe(gulp.dest('public/dist/images/'));
-
-    gulp.src('bower_components/roboto-fontface/fonts/*')
-    .pipe(gulp.dest('public/dist/css/fonts/'));
-
-    gulp.src([paths.css.app])
-    .pipe(minify())
-    .pipe(concat('app.css'))
-    .pipe(gulp.dest('public/dist/css/'));
-
-    gulp.src([paths.js.angular, paths.js.angularAnimate, paths.js.uiRouter, paths.js.app])
-    .pipe(uglify())
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('public/dist/js'));
+gulp.task('imageOptimize', function(){
+    gulp.src('public/images/*.png')
+    .pipe(optipng(['-o2']))
+    .pipe(gulp.dest('dist/images'));
 });
+
+gulp.task('moveTemplates', function(){
+    gulp.src('public/templates/*.html')
+    .pipe(gulp.dest('dist/templates'));
+});
+
+gulp.task('mainBowerFiles', function(){
+
+    var fontFilter = gulpFilter(['*.eot', '*.woff', '*.svg', '*.ttf']);
+
+    return gulp.src(bower())
+    .pipe(fontFilter)
+    .pipe(gulp.dest("dist/fonts/"));
+});
+
+gulp.task('usemin', function(){
+    gulp.src('public/index.html')
+    .pipe(usemin({
+        js: [uglify()],
+        css: [minify()]
+    }))
+    .pipe(gulp.dest('dist/'))
+});
+
+gulp.task('dist',['usemin','mainBowerFiles','imageOptimize', 'moveTemplates']);
 
 gulp.task('compass-sass', function(){
 

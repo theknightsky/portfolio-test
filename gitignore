@@ -1,3 +1,4 @@
 public/views.jade
 public/index-2nd-try.jade
 node_modules/
+.sass-cache/
