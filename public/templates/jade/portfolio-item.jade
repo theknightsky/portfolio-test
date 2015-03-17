@@ -1,13 +1,27 @@
 .container
-    section.content.content--bleed.content--black
+    section(class="content content--bleed content--black content--no-margin")
         section#portfolio-item
             .close-btn
                 a(ui-sref="portfolio.gallery")
                     span.mdi.mdi-close
             H1
-                span #
+                span(class="accent accent--{{project.accentColor}}") #
                 |  {{project.name}}
             p {{project.description}}
+            H4 Resources:
+            ul.resource-list
+                li(class="accent accent--{{project.accentColor}} mdi mdi-label")
+                    span  HTML5
+                li(class="accent accent--{{project.accentColor}} mdi mdi-label")
+                    span  CSS3
+                li(class="accent accent--{{project.accentColor}} mdi mdi-label")
+                    span  JS
+                li(class="accent accent--{{project.accentColor}} mdi mdi-label")
+                    span  AngularJS
+                li(class="accent accent--{{project.accentColor}} mdi mdi-label")
+                    span  BackboneJS
+                li(class="accent accent--{{project.accentColor}} mdi mdi-label")
+                    span  Fontawesome
 
             div(ng-repeat="item in project.images")
                 img(src="{{item}}")

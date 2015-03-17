@@ -59,8 +59,18 @@ app.controller('portfolioCtrl', ['$scope','$rootScope','$stateParams', function 
                     'images/Passkeep01.png',
                     'images/Passkeep02.png',
                     'images/Passkeep03.png'
-                ]
+                ],
+                accentColor: 'amber'
             };
+    $scope.projects = [
+        {
+            name: 'Passkeep',
+            color: 'green',
+            imageCount: 3,
+            description: 'description text',
+            resources: ['html','css','js']
+        }
+    ];
 }]);
 
 app.controller('resumeCtrl', ['$scope','$rootScope', function ($scope, $rootScope){

@@ -1,10 +1,19 @@
 
 <div class="container">
-  <section class="content content--bleed content--black">
+  <section class="content content--bleed content--black content--no-margin">
     <section id="portfolio-item">
       <div class="close-btn"><a ui-sref="portfolio.gallery"><span class="mdi mdi-close"></span></a></div>
-      <H1><span>#</span> {{project.name}}</H1>
+      <H1><span class="accent accent--{{project.accentColor}}">#</span> {{project.name}}</H1>
       <p>{{project.description}}</p>
+      <H4>Resources:</H4>
+      <ul class="resource-list">
+        <li class="accent accent--{{project.accentColor}} mdi mdi-label"><span> HTML5</span></li>
+        <li class="accent accent--{{project.accentColor}} mdi mdi-label"><span> CSS3</span></li>
+        <li class="accent accent--{{project.accentColor}} mdi mdi-label"><span> JS</span></li>
+        <li class="accent accent--{{project.accentColor}} mdi mdi-label"><span> AngularJS</span></li>
+        <li class="accent accent--{{project.accentColor}} mdi mdi-label"><span> BackboneJS</span></li>
+        <li class="accent accent--{{project.accentColor}} mdi mdi-label"><span> Fontawesome</span></li>
+      </ul>
       <div ng-repeat="item in project.images"><img src="{{item}}"/></div>
     </section>
   </section>
